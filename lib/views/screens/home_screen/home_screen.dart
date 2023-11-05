@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/custom_tetxformfield.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/customslider.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_container.dart';
-
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_text.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/out_best_offers.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/shift_gradiant_onhover.dart';
+import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 import '../../../constants/constants.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -17,7 +21,76 @@ class _HomeScreenState extends State<HomeScreen> {
   bool contactHoverer = false;
   bool servicesHoverer = false;
   bool travelHoverer = false;
+  String? selectRoll;
+  List listRoll = [
+    'Inquiry Type',
+    'Umrah Package',
+    'Corporate Tours',
+    'Air Ticketing',
+    'Hotel Bokings',
+    'Holidays packages',
+    'Group Tours',
+    'Visa Services'
+  ];
+  String? _setTravelDate = 'Travel Date';
+  String? _setDate = 'Travel Date';
+  String? _setCaptureDate = 'Travel Date';
+  DateTime selectedTravelDate = DateTime.now();
+  DateTime selectedCaptureDate = DateTime.now();
+  DateTime selectedDate = DateTime.now();
+  TextEditingController _traveldateController = TextEditingController();
+  TextEditingController _captureDateController = TextEditingController();
+  TextEditingController _DateController = TextEditingController();
 
+  Future<Null> _selectTravelDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedTravelDate,
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2101));
+    if (picked != null)
+      setState(() {
+        selectedTravelDate = picked;
+        _traveldateController.text = DateFormat.yMd().format(selectedTravelDate);
+      });
+  }
+  Future<Null> _captureDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedCaptureDate,
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2101));
+    if (picked != null)
+      setState(() {
+        selectedCaptureDate = picked;
+        _captureDateController.text = DateFormat.yMd().format(selectedCaptureDate);
+      });
+  }
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2101));
+    if (picked != null)
+      setState(() {
+        selectedDate = picked;
+        _DateController.text = DateFormat.yMd().format(selectedDate);
+      });
+  }
+  @override
+  void initState() {
+    _traveldateController = TextEditingController();
+    _traveldateController.text = 'Travel Date';
+    _captureDateController = TextEditingController();
+    _captureDateController.text = 'Capture Date';
+    _DateController = TextEditingController();
+    _DateController.text = 'Capture Date';
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,38 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Container(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * .15),
-              child: Row(
-                children: [
-                  Container(
-                    height: height * .04,
-                    width: width * .06,
-                    color: const Color(0xFF0081ab),
-                    child: Center(
-                      child: Text('Contact :',
-                          style: TextStyle(
-                              color: Constants.whight,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text('abc@gmail.com',
-                      style: TextStyle(
-                        color: Constants.whight,
-                      )),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Text('020959878483',
-                      style: TextStyle(
-                        color: Constants.whight,
-                      )),
-                ],
-              ),
-            ),
             height: height * .04,
             width: width,
             decoration: const BoxDecoration(
@@ -73,453 +114,444 @@ class _HomeScreenState extends State<HomeScreen> {
                 end: Alignment.centerRight,
               ),
             ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * .15),
+              child: Row(
+                children: [
+                  Container(
+                    height: height * .04,
+                    width: width * .06,
+                    color: const Color(0xFF0081ab),
+                    child: Center(
+                      child: Text('Contact :',
+                          style:
+                              TextStyle(color: Constants.whight, fontSize: 16)),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  OnHoverContainer(
+                    scale: 1.1,
+                    child: Text('abc123@gmail.com',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Constants.whight,
+                        )),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  OnHoverContainer(
+                    scale: 1.1,
+                    child: Text('020959878483',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Constants.whight,
+                        )),
+                  ),
+                ],
+              ),
+            ),
           ),
           Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                   0), // Set the radius to 0 for rectangular shape
             ),
-            elevation: 2,
+            elevation: 0,
             child: Container(
-              alignment: Alignment.bottomRight,
-              color: const Color(0xFFffffff),
-              height: height * .08,
-              child:Padding(
-                padding:  EdgeInsets.only(left: width*.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                alignment: Alignment.bottomRight,
+                color: const Color(0xFFffffff),
+                height: height * .08,
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * .05),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            'assets/images/img.png',
+                          )),
+                      Padding(
+                        padding: EdgeInsets.only(right: width * .10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            HoverTextColorChanger(
+                              defaultColor: Colors.black,
+                              hoverColor: Colors.blue,
+                              duration: const Duration(seconds: 1),
+                              child: const Text(
+                                'Home',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            HoverTextColorChanger(
+                              defaultColor: Colors.black,
+                              hoverColor: Colors.blue,
+                              duration: const Duration(seconds: 1),
+                              child: const Text(
+                                'ABOUT US',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            HoverTextColorChanger(
+                              defaultColor: Colors.black,
+                              hoverColor: Colors.blue,
+                              duration: const Duration(seconds: 1),
+                              child: const Text(
+                                'OUR SERVICES',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            HoverTextColorChanger(
+                              defaultColor: Colors.black,
+                              hoverColor: Colors.blue,
+                              duration: const Duration(seconds: 1),
+                              child: const Text(
+                                'WHY HARISTRAVELS',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            HoverTextColorChanger(
+                              defaultColor: Colors.black,
+                              hoverColor: Colors.blue,
+                              duration: const Duration(seconds: 1),
+                              child: const Text(
+                                'CONTACT US',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
+          ),
+          Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset('assets/images/img.png',)),
-                    Padding(
-                      padding:  EdgeInsets.only(right: width*.10),
-                      child: Row(mainAxisAlignment: MainAxisAlignment.end,children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MouseRegion(
-                              onEnter: (_) {
-                                setState(() {
-                                  homeHoverer = true;
-                                });
-                              },
-                              onExit: (_) {
-                                setState(() {
-                                  homeHoverer = false;
-                                });
-                              },
-                              child: Container(
-                                child: const Text(
-                                  'Home',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            homeHoverer?Container(height: 5,decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              gradient: const LinearGradient(colors: [
-                                Color(0xFFc724b1),
-                                Color(0xFF8d34b9),
-                                Color(0xFFc724b1),
-                              ], begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,)
-                            ),width:40):const SizedBox(),
-                          ],
-                        ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MouseRegion(
-                              onEnter: (_) {
-                                setState(() {
-                                  aboutHoverer = true;
-                                });
-                              },
-                              onExit: (_) {
-                                setState(() {
-                                  aboutHoverer = false;
-                                });
-                              },
-                              child: Container(
-                                child: const Text(
-                                  'ABOUT US',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            aboutHoverer?Container(height: 5,decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                gradient: const LinearGradient(colors: [
-                                  Color(0xFFc724b1),
-                                  Color(0xFF8d34b9),
-                                  Color(0xFFc724b1),
-                                ], begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,)
-                            ),width:60):const SizedBox()
-                          ],
-                        ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MouseRegion(
-                              onEnter: (_) {
-                                setState(() {
-                                  servicesHoverer = true;
-                                });
-                              },
-                              onExit: (_) {
-                                setState(() {
-                                  servicesHoverer = false;
-                                });
-                              },
-                              child: Container(
-                                child: const Text(
-                                  'OUR SERVICES',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            servicesHoverer?Container(height: 5,decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                gradient: const LinearGradient(colors: [
-                                  Color(0xFFc724b1),
-                                  Color(0xFF8d34b9),
-                                  Color(0xFFc724b1),
-                                ], begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,)
-                            ),width:80):const SizedBox()
-                          ],
-                        ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MouseRegion(
-                              onEnter: (_) {
-                                setState(() {
-                                  travelHoverer = true;
-                                });
-                              },
-                              onExit: (_) {
-                                setState(() {
-                                  travelHoverer = false;
-                                });
-                              },
-                              child: Container(
-                                child: const Text(
-                                  'WHY HARIS TRAVELS',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            travelHoverer?Container(height: 5,decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                gradient: const LinearGradient(colors: [
-                                  Color(0xFFc724b1),
-                                  Color(0xFF8d34b9),
-                                  Color(0xFFc724b1),
-                                ], begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,)
-                            ),width:120):const SizedBox()
-                          ],
-                        ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MouseRegion(
-                              onEnter: (_) {
-                                setState(() {
-                                  contactHoverer = true;
-                                });
-                              },
-                              onExit: (_) {
-                                setState(() {
-                                  contactHoverer = false;
-                                });
-                              },
-                              child: Container(
-                                child: const Text(
-                                  'CONTACT US',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            contactHoverer?Container(height: 5,decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                gradient: const LinearGradient(colors: [
-                                  Color(0xFFc724b1),
-                                  Color(0xFF8d34b9),
-                                  Color(0xFFc724b1),
-                                ], begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,)
-                            ),width:70):const SizedBox()
-                          ],
-                        ),
-                      ],),
+                    ManuallyControlledSlider(),
+                    SizedBox(
+                      height: height * .05,
                     ),
+                    const Center(
+                      child: Text(
+                        'Our best offers',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .05,
+                    ),
+                    ourBestOfferContainer(height, width),
+                    SizedBox(
+                      height: height * .05,
+                    ),
+                    const Center(
+                      child: Text(
+                        'Our best offers',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .05,
+                    ),
+                    ourBestOfferContainer(height, width),
+                    SizedBox(
+                      height: height * .10,
+                    ),
+                    const Center(
+                      child: Text(
+                        'Ask Us',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .07,
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextFormField(
+
+                              hintText: 'Your Name',
+                              width: width * .30,
+                              height: 60,
+                            ),
+                            SizedBox(width: width*.01,),
+                            CustomTextFormField(
+                              hintText: 'Your Contact #',
+                              width: width * .30,
+                              height: 60,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * .07,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextFormField(
+                              height: 60,
+                              hintText: 'Email address',
+                              width: width * .30,
+                            ),
+                            SizedBox(width: width*.01,),
+                            CustomTextFormField(
+                              height: 60,
+                              hintText: 'Your City',
+                              width: width * .30,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * .07,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: SizedBox(
+                                height: 57,
+                                width: width * .30,
+                                child: DropdownButton(
+                                  hint: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    child: Text(
+                                      'Umrah Package',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        letterSpacing: 0.5,
+                                      ),
+                                    ),
+                                  ),
+                                  value: selectRoll,
+                                  // Set the default value
+                                  icon: Icon(Icons.arrow_drop_down,
+                                      color: Colors.black),
+                                  items: listRoll.map((e) {
+                                    return DropdownMenuItem(
+                                      child: Text(
+                                        e!,
+                                        style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black,
+                                          letterSpacing: 0.5,
+                                        ),
+                                      ),
+                                      value:
+                                          e, // Ensure each item has a unique value
+                                    );
+                                  }).toList(),
+                                  onChanged: (dynamic value) {
+                                    setState(() {
+                                      selectRoll = value!;
+                                    });
+                                  },
+                                  isExpanded: true,
+                                  underline: Container(),
+                                  style: const TextStyle(
+                                      fontSize: 18, color: Colors.white),
+                                  dropdownColor: Colors.grey,
+                                  iconEnabledColor: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: width*.01,),
+                            InkWell(
+                              onTap: () {
+                                _selectTravelDate(context);
+                              },
+                              child: SizedBox(
+                                height: 60,
+                                width: width*.30,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
+                                  ),
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                  enabled: false,
+                                  keyboardType: TextInputType.text,
+                                  controller: _traveldateController,
+                                  onSaved: ( val) {
+                                    _setTravelDate = val!;
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * .07,
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: width*.01,),
+                            InkWell(
+                              onTap: () {
+                                _captureDate(context);
+                              },
+                              child: SizedBox(
+                                height: 60,
+                                width: width*.30,
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
+                                  ),
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                  enabled: false,
+                                  keyboardType: TextInputType.text,
+                                  controller: _captureDateController,
+                                  onSaved: ( val) {
+                                    _setCaptureDate = val!;
+                                  },
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: width*.01,),
+                            InkWell(
+                              onTap: () {
+                                _selectDate(context);
+                              },
+                              child: SizedBox(
+                                height: 60,
+                                width: width*.30,
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.grey)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
+                                  ),
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                  enabled: false,
+                                  keyboardType: TextInputType.text,
+                                  controller: _DateController,
+                                  onSaved: ( val) {
+                                    _setDate = val!;
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: height * .07,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomTextFormField(
+                              height: 60,
+                              hintText: 'Number of Persons(Adults)',
+                              width: width * .20,
+                            ),
+                            SizedBox(width: width*.01,),
+                            CustomTextFormField(
+                              height: 60,
+                              hintText: 'Number of Child (Age: 2-12)',
+                              width: width * .20,
+                            ),
+                            SizedBox(width: width*.01,),
+                            CustomTextFormField(
+                              height: 60,
+                              hintText: 'Number of Infact (Under 2 year)',
+                              width: width * .20,
+                            )
+                          ],
+                        ),
+                        SizedBox(height: height*.07,),
+                        CustomTextFormField(
+                          hintText: 'REMARKS)',
+                          width: width *.62,
+                          maxLine: 5,
+                        ),
+                        SizedBox(height: height*.07,),
+                        GradientOnHoverButton(
+                          duration: Duration(milliseconds: 1000),
+                           defaultGradient: [
+                             Color(0xff7819d3),
+                             Color(0xffe00fc3),
+                           ],
+                           hoverGradient: [
+                             Color(0xFFe00fc3),
+                             Color(0xFF7819d3),
+                           ],
+                           child: Container(
+                             height: height*.09,
+                             width: width*.15,
+                             child: Center(child: Text('Submit',style: TextStyle(color: Colors.white,fontSize: 16),),),
+                           ),
+                         ),
+                        SizedBox(height: height*.07,),
+                      ],
+                    )
                   ],
                 ),
-              )
-            ),
-          ),
-           Expanded(child: Container(child: SingleChildScrollView(
-             child: Column(children: [
-               SizedBox(height: 20,),
-               ManuallyControlledSlider(),
-               SizedBox(height: height*.05,),
-               Center(child: Text('Our best offers',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
-               SizedBox(height: height*.05,),
-               ourBestOfferContainer(height,width),
-               SizedBox(height: height*.05,),
-               Center(child: Text('Our best offers',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),),
-               SizedBox(height: height*.05,),
-               ourBestOfferContainer(height,width),
-             ],),
-           ),))
+              ))
         ],
       ),
     );
   }
 }
-Widget ourBestOfferContainer(double height,double width){
- return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      OnHoverContainer(
-        child: Container(
-          width: width*.15,
-          height: height*.45,
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                //   AssetImage('assets/images/shoes.png')
-                image: AssetImage('assets/images/m1.webp')),
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
 
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.5),
-                  Colors.transparent,
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.9)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0, 0, 0, 2.5],
-              ),
-            ),
-            //padding: const EdgeInsets.only(bottom: 14.0),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
-                      'Get 20% off select Power Plans.',
-                      //  pickOfTheDay[index].name,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,color: Constants.whight),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
 
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-      OnHoverContainer(
-        child: Container(
-          width: width*.15,
-          height: height*.45,
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                //   AssetImage('assets/images/shoes.png')
-                image: AssetImage('assets/images/m2.jpg')),
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.5),
-                  Colors.transparent,
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.9)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0, 0, 0, 2.5],
-              ),
-            ),
-            //padding: const EdgeInsets.only(bottom: 14.0),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
-                      '20% off for up to 6 months on home wireless plans',
-                      //  pickOfTheDay[index].name,
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: Constants.whight),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-      OnHoverContainer(
-        child: Container(
-          width: width*.15,
-          height: height*.45,
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                //   AssetImage('assets/images/shoes.png')
-                image: AssetImage('assets/images/m3.jpg')),
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.5),
-                  Colors.transparent,
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.9)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0, 0, 0, 2.5],
-              ),
-            ),
-            //padding: const EdgeInsets.only(bottom: 14.0),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
-                      '40% off on Unlimited National Data Power Plans with Esaad.',
-                      //  pickOfTheDay[index].name,
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: Constants.whight),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-      OnHoverContainer(
-        child: Container(
-          width: width*.15,
-          height: height*.45,
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                //   AssetImage('assets/images/shoes.png')
-                image: AssetImage('assets/images/m4.jpg')),
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.5),
-                  Colors.transparent,
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.9)
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0, 0, 0, 2.5],
-              ),
-            ),
-            //padding: const EdgeInsets.only(bottom: 14.0),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
-                      'Save big with yearly prepaid Flexi Plans.',
-                      //  pickOfTheDay[index].name,
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: Constants.whight),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}

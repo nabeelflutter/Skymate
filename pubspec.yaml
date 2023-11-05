@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   text_hover: ^1.0.0+1
   carousel_slider: ^4.2.1
+  animate_do:
+  date_format:
+  intl:
 
 dev_dependencies:
   flutter_test:

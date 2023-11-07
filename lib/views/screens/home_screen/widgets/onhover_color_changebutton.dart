@@ -8,6 +8,7 @@ class HoverColorAndTextColorButton extends StatefulWidget {
   final Color defaultTextColor;
   final Color hoverTextColor;
   final Duration duration;
+  double width;
 
   HoverColorAndTextColorButton({
     required this.text,
@@ -15,6 +16,7 @@ class HoverColorAndTextColorButton extends StatefulWidget {
     required this.hoverButtonColor,
     required this.defaultTextColor,
     required this.hoverTextColor,
+    required this.width,
     this.duration = const Duration(milliseconds: 300),
   });
 
@@ -31,7 +33,7 @@ class _HoverColorAndTextColorButtonState extends State<HoverColorAndTextColorBut
       onEnter: (event) => onEntered(true),
       onExit: (event) => onEntered(false),
       child: AnimatedContainer(
-        height: 40,width: 100,
+        height: 40,width: widget.width,
         duration: widget.duration,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3),

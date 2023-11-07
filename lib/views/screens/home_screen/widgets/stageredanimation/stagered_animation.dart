@@ -88,6 +88,7 @@ class _StaggeredGridViewScreenState extends State<StaggeredGridViewScreen> {
           child: Column(children: [
             SizedBox(height: 20,),
             Text('First Class',style: TextStyle(
+              fontFamily: 'Chusion',
               color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 14,

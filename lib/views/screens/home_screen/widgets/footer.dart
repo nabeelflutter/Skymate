@@ -58,7 +58,7 @@ Widget footer(){
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(height: 40,width: 180,
+                      Container(height: 40,width: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2),
                         color: Constants.whight,
@@ -71,6 +71,7 @@ Widget footer(){
                         ),
                       ),
                       HoverColorAndTextColorButton(
+                        width: 80,
                         text: 'Subscibe',
                         defaultButtonColor: const Color(0xff333333), // Default button color
                         hoverButtonColor: Constants.whight, // Hover button color
@@ -147,7 +148,7 @@ Widget footer(){
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SvgPicture.asset('assets/images/app.svg'),
-                  const SizedBox(width: 20,),
+                  const SizedBox(width: 10,),
                   SvgPicture.asset('assets/images/play.svg'),
 
                 ],
@@ -163,7 +164,7 @@ Widget footer(){
       const SizedBox(width: 20,),
 
       Expanded(
-          flex: 2,
+          flex: 3,
           child: Container(
         height: 400,
         color: const Color(0xff333333),
@@ -188,15 +189,15 @@ Widget footer(){
                 children: [
                   Card(
                       elevation: 0,
-                      child: Image.asset('assets/images/facebook (1).png',scale: 15,)),
-                  const SizedBox(width: 3,),
-                  Card(child: Image.asset('assets/images/twitter-sign.png',scale: 15,)),
-                  const SizedBox(width: 3,),
-                  Card(child: Image.asset('assets/images/youtube.png',scale: 15,)),
-                  const SizedBox(width: 3,),
-                  Card(child: Image.asset('assets/images/instagram.png',scale: 15,)),
-                  const SizedBox(width: 3,),
-                  Card(child: Image.asset('assets/images/twitter-sign.png',scale: 15,)),
+                      child: Image.asset('assets/images/facebook (1).png',scale: 14,)),
+                  const SizedBox(width: 1,),
+                  Card(child: Image.asset('assets/images/twitter-sign.png',scale: 14,)),
+                  const SizedBox(width: 1,),
+                  Card(child: Image.asset('assets/images/youtube.png',scale: 14,)),
+                  const SizedBox(width: 1,),
+                  Card(child: Image.asset('assets/images/instagram.png',scale: 14,)),
+                  const SizedBox(width: 1,),
+                  Card(child: Image.asset('assets/images/twitter-sign.png',scale: 14,)),
                 ],
               ),
                const SizedBox(height: 75,),
@@ -207,7 +208,7 @@ Widget footer(){
         ),
 
       )),
-        const Expanded(flex: 1,child: SizedBox()),
+     //   const Expanded(flex: 1,child: SizedBox()),
     ],),
   );
 }

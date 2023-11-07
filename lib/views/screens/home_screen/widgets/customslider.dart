@@ -32,7 +32,7 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
     return Stack(
       alignment: Alignment.center,
       children: [
-    CarouselSlider(
+        CarouselSlider(
       carouselController: _backController,
     options: CarouselOptions(
     height: height*.70,
@@ -45,7 +45,9 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
     Container(height: height,
     decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/im.jpg'),fit: BoxFit.fill)),
     ),
-
+      Container(height: height,
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/g1.jpg'),fit: BoxFit.fill)),
+      ),
     ]
     ),
         CarouselSlider(
@@ -63,14 +65,8 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FadeInDown(
-                        duration: Duration(milliseconds: 1000),
-                        delay: Duration(seconds: 4),
-                        child: Text('The net work that gets you',style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold,color: Constants.whight),)),
-                    FadeInUp(
-                        duration: Duration(milliseconds: 1000),
-                        delay: Duration(seconds: 4),
-                        child: Text('In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate',style: TextStyle(fontSize: 20,color: Constants.whight),)),
+                    Text('The net work that gets you',style: TextStyle(  fontFamily: 'Chusion',fontSize: 32,fontWeight: FontWeight.bold,color: Constants.whight),),
+                    Text('In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate',style: TextStyle(  fontFamily: 'Chusion',fontSize: 20,color: Constants.whight),),
                   ],
                 ),
               ),
@@ -78,7 +74,7 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
           ],
           options: CarouselOptions(
               autoPlay: true,
-              enlargeCenterPage: true, height: height*.60),
+              enlargeCenterPage: true, height: height*.60,viewportFraction: 2,autoPlayCurve: Curves.easeIn),
           carouselController: _controller,
         ),
       ],

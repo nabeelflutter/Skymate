@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 class CustomTextFormField extends StatefulWidget {
-  String? hintText;
+  dynamic hintText;
   double? width;
   String? initialValue;
   VoidCallback? function;
@@ -28,7 +28,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         initialValue: widget.initialValue,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          hintText: widget.hintText,
+          label: widget.hintText,
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey)
           ),

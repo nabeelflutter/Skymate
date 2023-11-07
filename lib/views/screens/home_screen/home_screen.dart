@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/custom_tetxformfield.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/customslider.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/footer.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_container.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_text.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/out_best_offers.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/out_bestoffer_section1.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/shift_gradiant_onhover.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/stageredanimation/stagered_animation.dart';
 import '../../../constants/constants.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -40,6 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedDate = DateTime.now();
   TextEditingController _traveldateController = TextEditingController();
   TextEditingController _captureDateController = TextEditingController();
+  TextEditingController? _emailController;
+  TextEditingController? _ContactController;
+  TextEditingController? _nameController;
+
+  TextEditingController? _cityController;
+  TextEditingController? _numberOfPersonController;
+  TextEditingController? _numberOfChildController;
+  TextEditingController? _numberOfInfactController;
+
+  TextEditingController? _remarksController;
   TextEditingController _DateController = TextEditingController();
 
   Future<Null> _selectTravelDate(BuildContext context) async {
@@ -49,12 +63,15 @@ class _HomeScreenState extends State<HomeScreen> {
         initialDatePickerMode: DatePickerMode.day,
         firstDate: DateTime(2015),
         lastDate: DateTime(2101));
-    if (picked != null)
+    if (picked != null) {
       setState(() {
         selectedTravelDate = picked;
-        _traveldateController.text = DateFormat.yMd().format(selectedTravelDate);
+        _traveldateController.text =
+            DateFormat.yMd().format(selectedTravelDate);
       });
+    }
   }
+
   Future<Null> _captureDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -62,12 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
         initialDatePickerMode: DatePickerMode.day,
         firstDate: DateTime(2015),
         lastDate: DateTime(2101));
-    if (picked != null)
+    if (picked != null) {
       setState(() {
         selectedCaptureDate = picked;
-        _captureDateController.text = DateFormat.yMd().format(selectedCaptureDate);
+        _captureDateController.text =
+            DateFormat.yMd().format(selectedCaptureDate);
       });
+    }
   }
+
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -81,8 +101,17 @@ class _HomeScreenState extends State<HomeScreen> {
         _DateController.text = DateFormat.yMd().format(selectedDate);
       });
   }
+
   @override
   void initState() {
+    _remarksController = TextEditingController();
+    _numberOfInfactController = TextEditingController();
+    _numberOfChildController = TextEditingController();
+    _numberOfPersonController = TextEditingController();
+    _cityController = TextEditingController();
+    _nameController = TextEditingController();
+    _ContactController = TextEditingController();
+    _emailController = TextEditingController();
     _traveldateController = TextEditingController();
     _traveldateController.text = 'Travel Date';
     _captureDateController = TextEditingController();
@@ -91,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _DateController.text = 'Capture Date';
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -123,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: width * .06,
                     color: const Color(0xFF0081ab),
                     child: Center(
-                      child: Text('Contact :',
+                      child: Text('contact :',
                           style:
                               TextStyle(color: Constants.whight, fontSize: 16)),
                     ),
@@ -182,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             HoverTextColorChanger(
                               defaultColor: Colors.black,
                               hoverColor: Colors.blue,
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(microseconds: 500),
                               child: const Text(
                                 'Home',
                                 style: TextStyle(
@@ -196,9 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             HoverTextColorChanger(
                               defaultColor: Colors.black,
                               hoverColor: Colors.blue,
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(microseconds: 500),
                               child: const Text(
-                                'ABOUT US',
+                                'About Us',
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
@@ -210,9 +240,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             HoverTextColorChanger(
                               defaultColor: Colors.black,
                               hoverColor: Colors.blue,
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(microseconds: 500),
                               child: const Text(
-                                'OUR SERVICES',
+                                'Our Services',
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
@@ -224,9 +254,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             HoverTextColorChanger(
                               defaultColor: Colors.black,
                               hoverColor: Colors.blue,
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(microseconds: 500),
                               child: const Text(
-                                'WHY HARISTRAVELS',
+                                'Why Haristravels',
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
@@ -238,9 +268,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             HoverTextColorChanger(
                               defaultColor: Colors.black,
                               hoverColor: Colors.blue,
-                              duration: const Duration(seconds: 1),
+                              duration: const Duration(microseconds: 500),
                               child: const Text(
-                                'CONTACT US',
+                                'Contact Us',
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
@@ -253,305 +283,348 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )),
           ),
-          Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ManuallyControlledSlider(),
-                    SizedBox(
-                      height: height * .05,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Our best offers',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: height * .05,
-                    ),
-                    ourBestOfferContainer(height, width),
-                    SizedBox(
-                      height: height * .05,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Our best offers',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: height * .05,
-                    ),
-                    ourBestOfferContainer(height, width),
-                    SizedBox(
-                      height: height * .10,
-                    ),
-                    const Center(
-                      child: Text(
-                        'Ask Us',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: height * .07,
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomTextFormField(
 
-                              hintText: 'Your Name',
-                              width: width * .30,
-                              height: 60,
+          Flexible(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ManuallyControlledSlider(),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  const Center(
+                    child: Text(
+                      'Our best offers',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  ourBestOfferSectionOne(context),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  const Center(
+                    child: Text(
+                      'Our best offers',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+
+                  ourBestOfferContainer(height, width),
+
+                  const Center(
+                    child: Text(
+                      'Our best offers',
+                      style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  StaggeredGridViewScreen(),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  const Center(
+                    child: Text(
+                      'Ask Us',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * .05,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomTextFormField(
+                            hintText: Text('Your Name'),
+                            width: width * .30,
+                            height: 60,
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          CustomTextFormField(
+                            hintText: Text('Your Contact #'),
+                            width: width * .30,
+                            height: 60,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * .03,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomTextFormField(
+                            height: 60,
+                            hintText: Text('Email address'),
+                            width: width * .30,
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          CustomTextFormField(
+                            height: 60,
+                            hintText: Text('Your City'),
+                            width: width * .30,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * .03,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          DecoratedBox(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(5),
                             ),
-                            SizedBox(width: width*.01,),
-                            CustomTextFormField(
-                              hintText: 'Your Contact #',
+                            child: SizedBox(
+                              height: 57,
                               width: width * .30,
-                              height: 60,
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: height * .07,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomTextFormField(
-                              height: 60,
-                              hintText: 'Email address',
-                              width: width * .30,
-                            ),
-                            SizedBox(width: width*.01,),
-                            CustomTextFormField(
-                              height: 60,
-                              hintText: 'Your City',
-                              width: width * .30,
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: height * .07,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: SizedBox(
-                                height: 57,
-                                width: width * .30,
-                                child: DropdownButton(
-                                  hint: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5),
+                              child: DropdownButton(
+                                hint: const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 5),
+                                  child: Text(
+                                    'Umrah Package',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      letterSpacing: 0.5,
+                                    ),
+                                  ),
+                                ),
+                                value: selectRoll,
+                                // Set the default value
+                                icon: Icon(Icons.arrow_drop_down,
+                                    color: Colors.black),
+                                items: listRoll.map((e) {
+                                  return DropdownMenuItem(
+                                    value:
+                                        e,
                                     child: Text(
-                                      'Umrah Package',
-                                      style: TextStyle(
+                                      e!,
+                                      style: const TextStyle(
+                                        fontStyle: FontStyle.italic,
+
                                         color: Colors.black,
                                         letterSpacing: 0.5,
                                       ),
-                                    ),
-                                  ),
-                                  value: selectRoll,
-                                  // Set the default value
-                                  icon: Icon(Icons.arrow_drop_down,
-                                      color: Colors.black),
-                                  items: listRoll.map((e) {
-                                    return DropdownMenuItem(
-                                      child: Text(
-                                        e!,
-                                        style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black,
-                                          letterSpacing: 0.5,
-                                        ),
-                                      ),
-                                      value:
-                                          e, // Ensure each item has a unique value
-                                    );
-                                  }).toList(),
-                                  onChanged: (dynamic value) {
-                                    setState(() {
-                                      selectRoll = value!;
-                                    });
-                                  },
-                                  isExpanded: true,
-                                  underline: Container(),
-                                  style: const TextStyle(
-                                      fontSize: 18, color: Colors.white),
-                                  dropdownColor: Colors.grey,
-                                  iconEnabledColor: Colors.white,
-                                ),
+                                    ), // Ensure each item has a unique value
+                                  );
+                                }).toList(),
+                                onChanged: (dynamic value) {
+                                  setState(() {
+                                    selectRoll = value!;
+                                  });
+                                },
+                                isExpanded: true,
+                                underline: Container(),
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                                dropdownColor: Colors.white,
+                                iconEnabledColor: Colors.white,
                               ),
                             ),
-                            SizedBox(width: width*.01,),
-                            InkWell(
-                              onTap: () {
-                                _selectTravelDate(context);
-                              },
-                              child: SizedBox(
-                                height: 60,
-                                width: width*.30,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
-                                  ),
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                  enabled: false,
-                                  keyboardType: TextInputType.text,
-                                  controller: _traveldateController,
-                                  onSaved: ( val) {
-                                    _setTravelDate = val!;
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: height * .07,
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(width: width*.01,),
-                            InkWell(
-                              onTap: () {
-                                _captureDate(context);
-                              },
-                              child: SizedBox(
-                                height: 60,
-                                width: width*.30,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
-                                  ),
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                  enabled: false,
-                                  keyboardType: TextInputType.text,
-                                  controller: _captureDateController,
-                                  onSaved: ( val) {
-                                    _setCaptureDate = val!;
-                                  },
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: width*.01,),
-                            InkWell(
-                              onTap: () {
-                                _selectDate(context);
-                              },
-                              child: SizedBox(
-                                height: 60,
-                                width: width*.30,
-                                child: TextFormField(
-                                  decoration: const InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey)
-                                      ),
-                                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF9531b7)))
-                                  ),
-                                  style: TextStyle(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                  enabled: false,
-                                  keyboardType: TextInputType.text,
-                                  controller: _DateController,
-                                  onSaved: ( val) {
-                                    _setDate = val!;
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: height * .07,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomTextFormField(
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              _selectTravelDate(context);
+                            },
+                            child: SizedBox(
                               height: 60,
-                              hintText: 'Number of Persons(Adults)',
-                              width: width * .20,
+                              width: width * .30,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFF9531b7)))),
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                                textAlign: TextAlign.center,
+                                enabled: false,
+                                keyboardType: TextInputType.text,
+                                controller: _traveldateController,
+                                onSaved: (val) {
+                                  _setTravelDate = val!;
+                                },
+                              ),
                             ),
-                            SizedBox(width: width*.01,),
-                            CustomTextFormField(
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * .03,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              _captureDate(context);
+                            },
+                            child: SizedBox(
                               height: 60,
-                              hintText: 'Number of Child (Age: 2-12)',
-                              width: width * .20,
+                              width: width * .30,
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFF9531b7)))),
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                                textAlign: TextAlign.center,
+                                enabled: false,
+                                keyboardType: TextInputType.text,
+                                controller: _captureDateController,
+                                onSaved: (val) {
+                                  _setCaptureDate = val!;
+                                },
+                              ),
                             ),
-                            SizedBox(width: width*.01,),
-                            CustomTextFormField(
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              _selectDate(context);
+                            },
+                            child: SizedBox(
                               height: 60,
-                              hintText: 'Number of Infact (Under 2 year)',
-                              width: width * .20,
-                            )
-                          ],
+                              width: width * .30,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    border: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFF9531b7)))),
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                                textAlign: TextAlign.center,
+                                enabled: false,
+                                keyboardType: TextInputType.text,
+                                controller: _DateController,
+                                onSaved: (val) {
+                                  _setDate = val!;
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * .03,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomTextFormField(
+                            height: 60,
+                            hintText:Text( 'Number of Persons(Adults)'),
+                            width: width * .20,
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          CustomTextFormField(
+                            height: 60,
+                            hintText: Text('Number of Child (Age: 2-12)'),
+                            width: width * .20,
+                          ),
+                          SizedBox(
+                            width: width * .01,
+                          ),
+                          CustomTextFormField(
+                            height: 60,
+                            hintText: Text('Number of Infact (Under 2 year)'),
+                            width: width * .20,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: height * .03,
+                      ),
+                      CustomTextFormField(
+                        hintText: Text('COMMENTS'),
+                        width: width * .62,
+                        maxLine: 5,
+                      ),
+                      SizedBox(
+                        height: height * .07,
+                      ),
+                      GradientOnHoverButton(
+                        duration: const Duration(milliseconds: 1000),
+                        defaultGradient: const [
+                          Color(0xff7819d3),
+                          Color(0xffe00fc3),
+                        ],
+                        hoverGradient: const [
+                          Color(0xFFe00fc3),
+                          Color(0xFF7819d3),
+                        ],
+                        child: Container(
+                          height: height * .09,
+                          width: width * .15,
+                          child: const Center(
+                            child: Text(
+                              'Submit',
+                              style:
+                                  TextStyle(
+                                      fontFamily: 'Chusion',
+                                      color: Colors.white, fontSize: 16),
+                            ),
+                          ),
                         ),
-                        SizedBox(height: height*.07,),
-                        CustomTextFormField(
-                          hintText: 'REMARKS)',
-                          width: width *.62,
-                          maxLine: 5,
-                        ),
-                        SizedBox(height: height*.07,),
-                        GradientOnHoverButton(
-                          duration: Duration(milliseconds: 1000),
-                           defaultGradient: [
-                             Color(0xff7819d3),
-                             Color(0xffe00fc3),
-                           ],
-                           hoverGradient: [
-                             Color(0xFFe00fc3),
-                             Color(0xFF7819d3),
-                           ],
-                           child: Container(
-                             height: height*.09,
-                             width: width*.15,
-                             child: Center(child: Text('Submit',style: TextStyle(color: Colors.white,fontSize: 16),),),
-                           ),
-                         ),
-                        SizedBox(height: height*.07,),
-                      ],
-                    )
-                  ],
-                ),
-              ))
+                      ),
+                      SizedBox(
+                        height: height * .07,
+                      ),
+                    ],
+                  ),
+                  footer()
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 }
-
-

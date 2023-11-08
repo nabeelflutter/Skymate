@@ -11,7 +11,7 @@ class _StaggeredGridViewScreenState extends State<StaggeredGridViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 85),
+      padding: const EdgeInsets.symmetric(horizontal: 200),
       child: StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 5.0,

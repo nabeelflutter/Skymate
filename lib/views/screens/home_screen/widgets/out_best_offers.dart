@@ -12,11 +12,10 @@ Widget ourBestOfferContainer(double height, double width) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .01),
           child: OnHoverContainer1(
-            scale: 1.009,
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: height * .60,
-              width: width * .20,
+              height: height * .55,
+              width: width * .18,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
@@ -67,11 +66,10 @@ Widget ourBestOfferContainer(double height, double width) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .01),
           child: OnHoverContainer1(
-            scale: 1.009,
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: height * .60,
-              width: width * .20,
+              height: height * .55,
+              width: width * .18,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
@@ -122,11 +120,11 @@ Widget ourBestOfferContainer(double height, double width) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .01),
           child: OnHoverContainer1(
-            scale: 1.009,
+
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: height * .60,
-              width: width * .20,
+              height: height * .55,
+              width: width * .18,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
@@ -177,11 +175,11 @@ Widget ourBestOfferContainer(double height, double width) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .01),
           child: OnHoverContainer1(
-            scale: 1.009,
+
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: height * .60,
-              width: width * .20,
+              height: height * .55,
+              width: width * .18,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(

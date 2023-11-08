@@ -29,8 +29,7 @@ class _OnHoverContainerState extends State<OnHoverContainer> {
 
 class OnHoverContainer1 extends StatefulWidget {
   final Widget child;
-  final double scale;
-  const OnHoverContainer1({super.key,required this.child,required this.scale});
+  const OnHoverContainer1({super.key,required this.child,});
 
   @override
   State<OnHoverContainer1> createState() => _OnHoverContainer1State();
@@ -46,7 +45,7 @@ class _OnHoverContainer1State extends State<OnHoverContainer1> {
         onEnter: (event) => onEntered(true),
         onExit: (event) => onEntered(false),
         child: AnimatedContainer(
-            duration: Duration(microseconds: 200),
+            duration: Duration(microseconds: 1000),
             transform: transform,
             child: widget.child));
   }

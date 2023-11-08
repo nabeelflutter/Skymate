@@ -12,7 +12,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -25,7 +25,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -67,7 +67,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -80,7 +80,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -97,7 +97,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                     Text(
                       'Dubai',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold),
+                      TextStyle(  fontFamily: 'Chusion',fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,
@@ -122,7 +122,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -135,11 +135,11 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/g1.jpg'),
+                                  'assets/images/du.jpg'),
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -152,7 +152,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                     Text(
                       'Dubai',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold),
+                      TextStyle(  fontFamily: 'Chusion',fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,
@@ -184,7 +184,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -197,11 +197,11 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/g1.jpg'),
+                                  'assets/images/du.jpg'),
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -214,7 +214,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                     Text(
                       'Dubai',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold),
+                      TextStyle(  fontFamily: 'Chusion',fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,
@@ -239,7 +239,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -252,11 +252,11 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/g1.jpg'),
+                                  'assets/images/du.jpg'),
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -269,7 +269,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                     Text(
                       'Dubai',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold),
+                      TextStyle(  fontFamily: 'Chusion',fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,
@@ -294,7 +294,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
           Expanded(
             child: CardWithShadowOnHover(
               child: Container(
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
@@ -307,11 +307,11 @@ Widget ourBestOfferSectionOne(BuildContext context){
                 child: Column(
                   children: [
                     Container(
-                      height: 150,
+                      height: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/g1.jpg'),
+                                  'assets/images/du.jpg'),
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -324,7 +324,7 @@ Widget ourBestOfferSectionOne(BuildContext context){
                     Text(
                       'Dubai',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold),
+                      TextStyle(  fontFamily: 'Chusion',fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 10,

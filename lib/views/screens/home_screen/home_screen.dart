@@ -5,6 +5,7 @@ import 'package:tech_cscommunity/views/screens/home_screen/widgets/custom_tetxfo
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/customslider.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/flotingaction_buttons/floting_action_button.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/footer.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/formobile/for_mobile.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_color_changebutton.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_container.dart';
 import 'package:tech_cscommunity/views/screens/home_screen/widgets/onhover_text.dart';
@@ -183,404 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return width < 1000 ?Scaffold(appBar: AppBar(
-      actions: [
-
-        Text('AITA'),
-        SizedBox(width: 20,),
-      ],
-      centerTitle: true,
-      backgroundColor: Colors.white,
-      title:  ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-          child: Image.asset(
-            'assets/images/img.png',scale: 5,
-          )),
-    ),drawer: Drawer(),
-    body: SingleChildScrollView(
-      child: Column(children: [
-        Container(height: height*.30,
-        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/im.jpg'),fit: BoxFit.fill)),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('The net work that gets you',style: TextStyle(  fontFamily: 'Chusion',fontSize: 18,fontWeight: FontWeight.bold,color: Constants.whight),),
-                  Text('In publishing and graphi to demonstrate',style: TextStyle(  fontFamily: 'Chusion',fontSize: 14,color: Constants.whight),),
-                ],
-              ),
-            ),
-        ),
-        SizedBox(
-          height: height * .05,
-        ),
-        const Center(
-          child: Text(
-            'Grab the best offer',
-            style:
-            TextStyle(
-                fontFamily: 'Chusion',
-                fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        SizedBox(
-          height: height * .05,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: CustomTextFormField(
-            hintText: Text('Your Name'),
-            width: width *70,
-            height: 60,
-          ),
-        ),
-        SizedBox(
-          height: height * .02,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
-          child: CustomTextFormField(
-            hintText: Text('Email or phone'),
-            width: width *70,
-            height: 60,
-          ),
-        ),
-        SizedBox(
-          height: height * .02,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: SizedBox(
-              height: 57,
-              width: width ,
-              child: DropdownButton(
-                hint: const Padding(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    'City of departure',
-                    style: TextStyle(
-                      color: Colors.black,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ),
-                value: selectDepartureCity,
-                // Set the default value
-                icon: Icon(Icons.arrow_drop_down,
-                    color: Colors.black),
-                items: cityOfDepartureList.map((e) {
-                  return DropdownMenuItem(
-                    value:
-                    e,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        e!,
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
-
-                          color: Colors.black,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                    ), // Ensure each item has a unique value
-                  );
-                }).toList(),
-                onChanged: (dynamic value) {
-                  setState(() {
-                    selectDepartureCity = value!;
-                  });
-                },
-                isExpanded: true,
-                underline: Container(),
-                style: const TextStyle(
-                    fontSize: 18, color: Colors.white),
-                dropdownColor: Colors.white,
-                iconEnabledColor: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: height * .02,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: SizedBox(
-              height: 57,
-              width: width ,
-              child: DropdownButton(
-                hint: const Padding(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    ' City of Arrival',
-                    style: TextStyle(
-                      color: Colors.black,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ),
-                value: selectArrivalCity,
-                // Set the default value
-                icon: Icon(Icons.arrow_drop_down,
-                    color: Colors.black),
-                items: cityOfArrivalList.map((e) {
-                  return DropdownMenuItem(
-                    value:
-                    e,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-
-                      child: Text(
-                        e!,
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
-
-                          color: Colors.black,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                    ), // Ensure each item has a unique value
-                  );
-                }).toList(),
-                onChanged: (dynamic value) {
-                  setState(() {
-                    selectArrivalCity = value!;
-                  });
-                },
-                isExpanded: true,
-                underline: Container(),
-                style: const TextStyle(
-                    fontSize: 18, color: Colors.white),
-                dropdownColor: Colors.white,
-                iconEnabledColor: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: height * .02,
-        ),
-        InkWell(
-          onTap: () {
-            _selectDepartureDate(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SizedBox(
-              height: 60,
-              width: width ,
-              child: TextFormField(
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Colors.grey)),
-                    border: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Colors.grey)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color(0xFF9531b7)))),
-                style: TextStyle(
-                    fontSize: 16, color: Colors.black),
-                textAlign: TextAlign.center,
-                enabled: false,
-                keyboardType: TextInputType.text,
-                controller: _departureDateController,
-                onSaved: (val) {
-                  _setDepartureDate = val!;
-                },
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: height * .02,
-        ),
-        InkWell(
-          onTap: () {
-            _selectArrivalDate(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SizedBox(
-              height: 60,
-              width: width ,
-              child: TextFormField(
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Colors.grey)),
-                    border: OutlineInputBorder(
-                        borderSide:
-                        BorderSide(color: Colors.grey)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color(0xFF9531b7)))),
-                style: TextStyle(
-                    fontSize: 16, color: Colors.black),
-                textAlign: TextAlign.center,
-                enabled: false,
-                keyboardType: TextInputType.text,
-                controller: _arrivalDateController,
-                onSaved: (val) {
-                  _setArrivalDate = val!;
-                },
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 10,),
-        GradientOnHoverButton(
-          duration: const Duration(milliseconds: 1000),
-          defaultGradient: const [
-            Color(0xff7819d3),
-            Color(0xffe00fc3),
-          ],
-          hoverGradient: const [
-            Color(0xFFe00fc3),
-            Color(0xFF7819d3),
-          ],
-          child: Container(
-            height: height * .09,
-            width: 180,
-            child: const Center(
-              child: Text(
-                'Submit',
-                style:
-                TextStyle(
-                    fontFamily: 'Chusion',
-                    color: Colors.white, fontSize: 16),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 25,),
-        Container(
-          height: height,
-          width: width,
-          color: Color(0xff333333),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('Save with our latest fares and offers.',style: TextStyle(color: Color(
-                    0xffbcc1c5)),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,top: 5),
-                child: TextWithHoverContainer(
-                  text: 'Unsubscribe or change your preferences',
-                  containerColor: Colors.grey.withOpacity(0.5), // Container color
-                ),
-              ),
-              SizedBox(height: 10,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10),
-                child: Container(height: 40,width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    color: Constants.whight,
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Email address',style: TextStyle(fontSize: 16),),),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10,),
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10),
-                child: HoverColorAndTextColorButton(
-                  width: width,
-                  text: 'Subscibe',
-                  defaultButtonColor: const Color(0xff333333), // Default button color
-                  hoverButtonColor: Constants.whight, // Hover button color
-                  defaultTextColor: Constants.whight, // Default text color
-                  hoverTextColor: Colors.black, // Hover text color
-                  duration: const Duration(milliseconds: 300), // Animation duration
-                ),
-              ),
-              SizedBox(height: 10,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text('For details on how we use your information, please see our',style: TextStyle(color: Color(0xffbcc1c5)),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,top: 30),
-                child: Text('Book and manage your flights on the go.',style: TextStyle(color: Color(0xffbcc1c5)),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset('assets/images/app.svg'),
-                    const SizedBox(width: 10,),
-                    SvgPicture.asset('assets/images/play.svg'),
-
-                  ],
-                ),
-              ),
-              SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,top: 10),
-                child: Text('Share your Emirates experience.',style: TextStyle(color: Color(0xffbcc1c5)),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10,top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Card(
-                        elevation: 0,
-                        child: Image.asset('assets/images/facebook (1).png',scale: 14,)),
-                    const SizedBox(width: 1,),
-                    Card(child: Image.asset('assets/images/twitter-sign.png',scale: 14,)),
-                    const SizedBox(width: 1,),
-                    Card(child: Image.asset('assets/images/youtube.png',scale: 14,)),
-                    const SizedBox(width: 1,),
-                    Card(child: Image.asset('assets/images/instagram.png',scale: 14,)),
-                    const SizedBox(width: 1,),
-                    Card(child: Image.asset('assets/images/twitter-sign.png',scale: 14,)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(height: 100,width: 100,child: SvgPicture.asset('assets/images/fi1.svg',)),
-                    Container(height: 100,width: 100,child: SvgPicture.asset('assets/images/sec.svg',)),
-                    Container(height: 100,width: 100,child: SvgPicture.asset('assets/images/thir.svg',)),
-                  ],),
-              ),
-              Divider()
-          ],),
-        ),
-      ],),
-    ),
-    ):Scaffold(
+    return width < 1000 ?ForMobileDesignHomePage():Scaffold(
       body: Column(
         children: [
           Container(
@@ -711,20 +315,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               hoverColor: Colors.blue,
                               duration: const Duration(microseconds: 500),
                               child: const Text(
-                                'Why Haristravels',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            HoverTextColorChanger(
-                              defaultColor: Colors.black,
-                              hoverColor: Colors.blue,
-                              duration: const Duration(microseconds: 500),
-                              child: const Text(
                                 'Contact Us',
                                 style: TextStyle(
                                   fontSize: 14,
@@ -795,7 +385,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       'Ask Us',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(
+                              fontFamily: 'Chusion',
+                              fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
@@ -807,14 +399,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             hintText: Text('Your Name'),
                             width: width * .30,
                             height: 60,
                           ),
                           SizedBox(
-                            width: width * .01,
+                            width: width * .02,
                           ),
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             hintText: Text('Your Contact #'),
                             width: width * .30,
                             height: 60,
@@ -828,14 +422,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             height: 60,
                             hintText: Text('Email address'),
                             width: width * .30,
                           ),
                           SizedBox(
-                            width: width * .01,
+                            width: width * .02,
                           ),
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             height: 60,
                             hintText: Text('Your City'),
                             width: width * .30,
@@ -851,19 +447,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           DecoratedBox(
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius: BorderRadius.circular(0),
                             ),
                             child: SizedBox(
-                              height: 57,
+                              height: 50,
                               width: width * .30,
                               child: DropdownButton(
-                                hint: const Padding(
+                                hint:  Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 5),
                                   child: Text(
                                     'Umrah Package',
                                     style: TextStyle(
                                       color: Colors.black,
+                                      fontSize: 15,
                                       letterSpacing: 0.5,
                                     ),
                                   ),
@@ -902,26 +499,32 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: width * .01,
+                            width: width * .02,
                           ),
                           InkWell(
                             onTap: () {
                               _selectTravelDate(context);
                             },
-                            child: SizedBox(
-                              height: 60,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade500),
+                                  borderRadius: BorderRadius.circular(0)
+                              ),
+                              height: 50,
                               width: width * .30,
                               child: TextFormField(
-                                decoration: const InputDecoration(
+                                decoration:  InputDecoration(
                                     enabledBorder: OutlineInputBorder(
+
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     border: OutlineInputBorder(
+
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Color(0xFF9531b7)))),
+                                            color: Colors.grey),borderRadius: BorderRadius.circular(0))),
                                 style: const TextStyle(
                                     fontSize: 16, color: Colors.black),
                                 textAlign: TextAlign.center,
@@ -942,27 +545,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: width * .01,
-                          ),
+
                           InkWell(
                             onTap: () {
                               _captureDate(context);
                             },
-                            child: SizedBox(
-                              height: 60,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey.shade500),
+                                  borderRadius: BorderRadius.circular(0)
+                              ),
+                              height: 50,
                               width: width * .30,
                               child: TextFormField(
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     border: OutlineInputBorder(
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Color(0xFF9531b7)))),
+                                            color: Colors.grey),borderRadius: BorderRadius.circular(0))),
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.black),
                                 textAlign: TextAlign.center,
@@ -982,20 +587,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () {
                               _selectDate(context);
                             },
-                            child: SizedBox(
-                              height: 60,
+                            child: Container(
+                              decoration: BoxDecoration(
+                               border: Border.all(color: Colors.grey.shade500),
+                                borderRadius: BorderRadius.circular(0)
+                              ),
+                              height: 50,
                               width: width * .30,
                               child: TextFormField(
-                                decoration: const InputDecoration(
+                                decoration:  InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     border: OutlineInputBorder(
                                         borderSide:
-                                            BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(0)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Color(0xFF9531b7)))),
+                                            color: Colors.grey),borderRadius: BorderRadius.circular(0))),
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.black),
                                 textAlign: TextAlign.center,
@@ -1017,6 +626,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             height: 60,
                             hintText:Text( 'Number of Persons(Adults)'),
                             width: width * .20,
@@ -1025,6 +635,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: width * .01,
                           ),
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             height: 60,
                             hintText: Text('Number of Child (Age: 2-12)'),
                             width: width * .20,
@@ -1033,8 +644,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: width * .01,
                           ),
                           CustomTextFormField(
+                            borderRadius: BorderRadius.circular(0),
                             height: 60,
-                            hintText: Text('Number of Infact (Under 2 year)'),
+                            hintText: Text('Number of Infact'),
                             width: width * .20,
                           )
                         ],
@@ -1043,6 +655,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: height * .03,
                       ),
                       CustomTextFormField(
+                        borderRadius: BorderRadius.circular(0),
                         hintText: Text('COMMENTS'),
                         width: width * .62,
                         maxLine: 5,

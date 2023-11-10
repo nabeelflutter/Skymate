@@ -3,25 +3,25 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../constants/constants.dart';
-import '../TextWithHoverContainer.dart';
-import '../custom_box/custombox_formobile/show_boxfor_mobile.dart';
-import '../custom_tetxformfield.dart';
-import '../mydrawer/my_drawer.dart';
-import '../onhover_color_changebutton.dart';
-import '../onhover_container.dart';
-import '../onhovertext_show_progressindicator.dart';
-import '../shift_gradiant_onhover.dart';
-import '../stageredanimation/stagered_animation.dart';
+import '../../home_screen/widgets/TextWithHoverContainer.dart';
+import '../../home_screen/widgets/custom_box/custombox_formobile/show_boxfor_mobile.dart';
+import '../../home_screen/widgets/custom_tetxformfield.dart';
+import '../../home_screen/widgets/mydrawer/my_drawer.dart';
+import '../../home_screen/widgets/onhover_color_changebutton.dart';
+import '../../home_screen/widgets/onhovertext_show_progressindicator.dart';
+import '../../home_screen/widgets/shift_gradiant_onhover.dart';
+import '../../home_screen/widgets/stageredanimation/stagered_animation.dart';
 
-class ForMobileDesignHomePage extends StatefulWidget {
-  const ForMobileDesignHomePage({super.key});
+
+class ForMobileDesignServicesScreen extends StatefulWidget {
+  const ForMobileDesignServicesScreen({super.key});
 
   @override
-  State<ForMobileDesignHomePage> createState() =>
-      _ForMobileDesignHomePageState();
+  State<ForMobileDesignServicesScreen> createState() =>
+      _ForMobileDesignServicesScreenState();
 }
 
-class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
+class _ForMobileDesignServicesScreenState extends State<ForMobileDesignServicesScreen> {
   bool homeHoverer = false;
   bool aboutHoverer = false;
   bool contactHoverer = false;
@@ -91,8 +91,16 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
   TextEditingController _captureDateController = TextEditingController();
   TextEditingController _departureDateController = TextEditingController();
   TextEditingController _arrivalDateController = TextEditingController();
+  TextEditingController? _emailController;
+  TextEditingController? _ContactController;
+  TextEditingController? _nameController;
 
+  TextEditingController? _cityController;
+  TextEditingController? _numberOfPersonController;
+  TextEditingController? _numberOfChildController;
+  TextEditingController? _numberOfInfactController;
 
+  TextEditingController? _remarksController;
   TextEditingController _DateController = TextEditingController();
 
   Future<Null> _selectArrivalDate(BuildContext context) async {
@@ -175,6 +183,14 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
 
   @override
   void initState() {
+    _remarksController = TextEditingController();
+    _numberOfInfactController = TextEditingController();
+    _numberOfChildController = TextEditingController();
+    _numberOfPersonController = TextEditingController();
+    _cityController = TextEditingController();
+    _nameController = TextEditingController();
+    _ContactController = TextEditingController();
+    _emailController = TextEditingController();
     _traveldateController = TextEditingController();
     _traveldateController.text = 'Travel Date';
     _captureDateController = TextEditingController();
@@ -290,7 +306,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                   child: CustomTextFormField(
                     maxLine: 1,
                     borderRadius: BorderRadius.circular(10),
@@ -351,7 +367,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                         isExpanded: true,
                         underline: Container(),
                         style:
-                            const TextStyle(fontSize: 18, color: Colors.white),
+                        const TextStyle(fontSize: 18, color: Colors.white),
                         dropdownColor: Colors.white,
                         iconEnabledColor: Colors.white,
                       ),
@@ -410,7 +426,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                         isExpanded: true,
                         underline: Container(),
                         style:
-                            const TextStyle(fontSize: 18, color: Colors.white),
+                        const TextStyle(fontSize: 18, color: Colors.white),
                         dropdownColor: Colors.white,
                         iconEnabledColor: Colors.white,
                       ),
@@ -436,7 +452,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                         child: TextFormField(
                           decoration: InputDecoration(
                               hintText:
-                                  _departureDateController.text.toString(),
+                              _departureDateController.text.toString(),
                               enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey)),
                               border: const OutlineInputBorder(
@@ -526,225 +542,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
               ],
             ),
           ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 25),
-              child: Center(
-                child: Text(
-                  'Our best offers',
-                  style: TextStyle(
-                      fontFamily: 'Chusion',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              child: GestureDetector(
-                onTap: () async {
-                  await GeneralDialogsForMobile.showLoginDialogue(context);
-                },
-                child: CardWithShadowOnHover(
-                  child: Container(
-                    height: 300,
-                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 3,
-                          blurRadius: 10,
-                          offset: const Offset(0, 3))
-                    ]),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 200,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/images/du.jpg'),
-                                  fit: BoxFit.fill)),
-                        ),
-                        const Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text('UNITED ARAB EMIRATES'),
-                            Text(
-                              'Dubai',
-                              style: TextStyle(
-                                  fontFamily: 'Chusion',
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text('Book Economy class'),
-                            Text(
-                              'fron USD 234',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }, childCount: 3)),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: Center(
-                child: Text(
-                  'Our best offers',
-                  style: TextStyle(
-                      fontFamily: 'Chusion',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: GestureDetector(
-                  onTap: () async {
-                    await GeneralDialogsForMobile.showLoginDialogue(context);
-                  },
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    height: height * .25,
-                    width: width * 40,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/c2.jpg',
-                      ),
-                      fit: BoxFit.fill,
-                    )),
-                    child: Container(
-                      // height: height * .20,
-                      width: width,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.7),
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.black.withOpacity(0.8),
-                            Colors.black.withOpacity(0.2)
-                          ],
-                          begin: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Title',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Constants.whight),
-                          ),
-                          Text(
-                            'Subtitle',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Constants.whight),
-                          ),
-                          SizedBox(
-                            height: height * .05,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }, childCount: 4)),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: Center(
-                child: Text(
-                  'Our best offers',
-                  style: TextStyle(
-                      fontFamily: 'Chusion',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 5),
-              child: GestureDetector(
-                onTap: () async {
-                  await GeneralDialogsForMobile.showLoginDialogue(context);
-                },
-                child: CardWithShadowOnHover(
-                  child: Card(
-                    child: Container(
-                      height: height * .30,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(4),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/images/g2.jpg'),
-                              fit: BoxFit.fill)),
-                      child: const Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20, top: 10),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Create your Dubai experence',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Chusion',
-                                  fontSize: 25,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Learn more',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Chusion',
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          }, childCount: 5)),
+
           SliverToBoxAdapter(
             child: Column(
               children: [
@@ -768,42 +566,42 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
           ),
           SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Image.asset(imageList[index]),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextWithHoverProgressIndicator(
-                  containerColor: const Color(0xffd2af6d),
-                  text: titleList[index],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 200,
-                  child:  Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text(
-                        subTitleList[index],
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontFamily: 'Chusion'),
-                      ),
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                )
-              ],
-            );
-          }, childCount: 6)),
+                    Image.asset(imageList[index]),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextWithHoverProgressIndicator(
+                      containerColor: const Color(0xffd2af6d),
+                      text: titleList[index],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: 200,
+                      child:  Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text(
+                            subTitleList[index],
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 13,
+                                fontFamily: 'Chusion'),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              }, childCount: 6)),
 
           SliverToBoxAdapter(
             child: Column(
@@ -833,7 +631,7 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                         child: TextWithHoverContainer(
                           text: 'Unsubscribe or change your preferences',
                           containerColor:
-                              Colors.grey.withOpacity(0.5), // Container color
+                          Colors.grey.withOpacity(0.5), // Container color
                         ),
                       ),
                       const SizedBox(
@@ -936,33 +734,33 @@ class _ForMobileDesignHomePageState extends State<ForMobileDesignHomePage> {
                             ),
                             Card(
                                 child: Image.asset(
-                              'assets/images/twitter-sign.png',
-                              scale: 14,
-                            )),
+                                  'assets/images/twitter-sign.png',
+                                  scale: 14,
+                                )),
                             const SizedBox(
                               width: 1,
                             ),
                             Card(
                                 child: Image.asset(
-                              'assets/images/youtube.png',
-                              scale: 14,
-                            )),
+                                  'assets/images/youtube.png',
+                                  scale: 14,
+                                )),
                             const SizedBox(
                               width: 1,
                             ),
                             Card(
                                 child: Image.asset(
-                              'assets/images/instagram.png',
-                              scale: 14,
-                            )),
+                                  'assets/images/instagram.png',
+                                  scale: 14,
+                                )),
                             const SizedBox(
                               width: 1,
                             ),
                             Card(
                                 child: Image.asset(
-                              'assets/images/twitter-sign.png',
-                              scale: 14,
-                            )),
+                                  'assets/images/twitter-sign.png',
+                                  scale: 14,
+                                )),
                           ],
                         ),
                       ),

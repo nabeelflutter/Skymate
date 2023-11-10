@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tech_cscommunity/constants/constants.dart';
+
+import '../custom_box/show_box.dart';
 class StaggeredGridViewScreen extends StatefulWidget {
   const StaggeredGridViewScreen({super.key});
   @override
@@ -18,42 +20,47 @@ class _StaggeredGridViewScreenState extends State<StaggeredGridViewScreen> {
         crossAxisSpacing: 5.0,
         children: [
           StaggeredGridTile.count(
-            child:  CardWithShadowOnHover(
-                child: Card(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(4),image: DecorationImage(image: AssetImage('assets/images/g1.jpg'),fit: BoxFit.fill)
-                    ),
-                    child: Column(children: [
-                      SizedBox(height: 20,),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20,top: 10),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text('Create your Dubai experence',style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Chusion',
-                            fontSize: 25,
-                          ),),
-                        ),
+            child:  GestureDetector(
+              onTap: () async {
+                await GeneralDialogs.showLoginDialogue(context);
+              },
+              child: CardWithShadowOnHover(
+                  child: Card(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(4),image: DecorationImage(image: AssetImage('assets/images/g1.jpg'),fit: BoxFit.fill)
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text('Learn more',style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Chusion',
-                            fontSize: 14,
-                          ),),
+                      child: Column(children: [
+                        SizedBox(height: 20,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20,top: 10),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('Create your Dubai experence',style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Chusion',
+                              fontSize: 25,
+                            ),),
+                          ),
                         ),
-                      )
-                    ],),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text('Learn more',style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Chusion',
+                              fontSize: 14,
+                            ),),
+                          ),
+                        )
+                      ],),
+                    ),
                   ),
                 ),
-              ),
+            ),
               crossAxisCellCount: 2,
               mainAxisCellCount: 2,
             ),
@@ -78,27 +85,32 @@ class _StaggeredGridViewScreenState extends State<StaggeredGridViewScreen> {
     );
   }
   imageConstainer(imgPath) {
-    return CardWithShadowOnHover(
-      child: Card(
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(4),image: DecorationImage(image: AssetImage(imgPath),fit: BoxFit.fill)
+    return GestureDetector(
+      onTap: () async {
+        await GeneralDialogs.showLoginDialogue(context);
+      },
+      child: CardWithShadowOnHover(
+        child: Card(
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(4),image: DecorationImage(image: AssetImage(imgPath),fit: BoxFit.fill)
+            ),
+            child: Column(children: [
+              SizedBox(height: 20,),
+              Text('First Class',style: TextStyle(
+                fontFamily: 'Chusion',
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),),
+              SizedBox(height: 20,),
+              Text('Learn more',style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+              ),)
+            ],),
           ),
-          child: Column(children: [
-            SizedBox(height: 20,),
-            Text('First Class',style: TextStyle(
-              fontFamily: 'Chusion',
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),),
-            SizedBox(height: 20,),
-            Text('Learn more',style: TextStyle(
-              color: Colors.black,
-              fontSize: 14,
-            ),)
-          ],),
         ),
       ),
     );

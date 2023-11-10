@@ -8,7 +8,7 @@ Widget myDrawer() {
      borderRadius: BorderRadius.circular(0)
    ),
     child: Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -24,7 +24,7 @@ Widget myDrawer() {
           ])),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           ClipRRect(
@@ -33,7 +33,7 @@ Widget myDrawer() {
                 'assets/images/img.png',
                 scale: 5,
               )),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           ListTile(

@@ -7,7 +7,7 @@ class MyFAB extends StatefulWidget {
 
 class _MyFABState extends State<MyFAB> {
   bool isHovered = false;
-
+  bool showBox = false;
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -37,7 +37,9 @@ class _MyFABState extends State<MyFAB> {
             child: FloatingActionButton(
               elevation: 0,
               backgroundColor: Color(0xFF7819d3),
-              onPressed: () {},
+              onPressed: () {
+                showBox = true;
+              },
               child: isHovered?Image.asset('assets/images/smile.png',height: 30,width: 40,color:Colors.white): Image.asset('assets/images/option.png',height: 40,width: 40,color:Colors.white),
             ),
           ),
@@ -74,6 +76,14 @@ class _MyFABState extends State<MyFAB> {
                 ),
               ),
             ),
+          showBox == true?
+            Positioned(
+              child: GestureDetector(
+                  onTap: (){
+                    showBox = false;
+                  },
+                  child: Container(height: 100,width: 100,color: Colors.green,)),
+            ):SizedBox()
         ],
       ),
     );

@@ -9,7 +9,8 @@ class CustomTextFormField extends StatefulWidget {
   int? maxLine;
   TextEditingController? controller;
   double? height;
-   CustomTextFormField({super.key,this.borderRadius, this.onSave,this.controller, this.function,this.hintText, this.width, this.initialValue, this.maxLine,this.height});
+  Color? textColor;
+   CustomTextFormField({super.key,this.textColor,this.borderRadius, this.onSave,this.controller, this.function,this.hintText, this.width, this.initialValue, this.maxLine,this.height});
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -22,6 +23,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       height: 50,
       width: widget.width,
       child: TextFormField(
+        style: TextStyle(color: widget.textColor),
         textAlign: TextAlign.start,
         onSaved: widget.onSave,
         onTap: widget.function,
@@ -30,7 +32,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         initialValue: widget.initialValue,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          labelStyle: TextStyle( color: Colors.black,fontSize: 16),
+          labelStyle: TextStyle( color: widget.textColor,fontSize: 16),
           isDense: true,
           label: widget.hintText,
           enabledBorder: OutlineInputBorder(

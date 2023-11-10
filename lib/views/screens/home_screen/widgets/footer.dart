@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_cscommunity/constants/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tech_cscommunity/views/screens/home_screen/widgets/custom_tetxformfield.dart';
 import 'TextWithHoverContainer.dart';
 import 'ishover_elevation_card.dart';
 import 'onhover_color_changebutton.dart';
@@ -51,37 +52,38 @@ Widget footer(){
                 ),
               ),
               const SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(height: 40,width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2),
-                        color: Constants.whight,
-                      ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text('Email address',style: TextStyle(fontSize: 16),),),
-                        ),
-                      ),
-                      HoverColorAndTextColorButton(
-                        width: 80,
-                        text: 'Subscibe',
-                        defaultButtonColor: const Color(0xff333333), // Default button color
-                        hoverButtonColor: Constants.whight, // Hover button color
-                        defaultTextColor: Constants.whight, // Default text color
-                        hoverTextColor: Colors.black, // Hover text color
-                        duration: const Duration(milliseconds: 300), // Animation duration
-                      )
+              Align(
+                alignment: Alignment.topLeft,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                        width: 200,
+                        height: 45,
+                        child: TextFormField(
+                          maxLines: 1,
+                          decoration: const InputDecoration(
+                            isDense: true,
+                            hintText: 'Email address',
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                            enabledBorder:  OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                            focusedBorder:  OutlineInputBorder(borderSide: BorderSide(color: Colors.white))
+                          ),
+                        )
+                    ),
+                    HoverColorAndTextColorButton(
+                      width: 80,
+                      text: 'Subscibe',
+                      defaultButtonColor: const Color(0xff333333), // Default button color
+                      hoverButtonColor: Constants.whight, // Hover button color
+                      defaultTextColor: Constants.whight, // Default text color
+                      hoverTextColor: Colors.black, // Hover text color
+                      duration: const Duration(milliseconds: 300), // Animation duration
+                    )
 
-                    ],
-                  ),
+                  ],
                 ),
               ),
               const SizedBox(height: 15,),
